@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Book Your Ceremony | Married In Moments — Beaverton, Oregon</title>
-<meta name="description" content="Book your marriage ceremony in Beaverton, Oregon. Reserve your date online with Married In Moments — simple, legal, and stress-free.">
+<meta name="description" content="Book your marriage ceremony in Beaverton, Oregon. Reserve your date and time online with Married In Moments — simple, legal, and stress-free.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -35,126 +35,23 @@
   <div class="wrap">
     <span class="script" style="font-size:2rem">Save your date</span>
     <h1>Book Your Ceremony</h1>
-    <p>Tell us about your day and we&rsquo;ll confirm your date. All ceremonies are by appointment only.</p>
+    <p>Choose your date and time below to reserve your ceremony in minutes. All ceremonies are by appointment only.</p>
   </div>
 </section>
 
 <section class="section" style="background:var(--cream-2)">
   <div class="wrap">
 
-    <form class="book-form" id="bookForm" onsubmit="return false;">
-      <div class="row">
-        <div class="field"><label>Partner 1 full name</label><input type="text" name="partner1" placeholder="First and last name" required></div>
-        <div class="field"><label>Partner 2 full name</label><input type="text" name="partner2" placeholder="First and last name" required></div>
-      </div>
-
-      <div class="row">
-        <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@email.com" required></div>
-        <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="(503) 000-0000" required></div>
-      </div>
-
-      <div class="field">
-        <label>Which service?</label>
-        <select name="service" id="serviceSelect" required>
-          <option value="">Select a service&hellip;</option>
-          <option value="twoofus">Just the Two of Us &mdash; License Signing ($125, $50 deposit)</option>
-          <option value="chapel">The Minute Chapel &mdash; Elopement ($175, $75 deposit)</option>
-          <option value="eloped">Simply Eloped &mdash; Mini Ceremony ($250, $100 deposit)</option>
-        </select>
-      </div>
-
-      <!-- Ceremony location: shown only for Simply Eloped -->
-      <div class="field" id="locationField" style="display:none">
-        <label>Ceremony location (your home or private location)</label>
-        <input type="text" name="location" placeholder="Address or venue in the Portland Metro">
-      </div>
-
-      <div class="row">
-        <div class="field"><label>Preferred date</label><input type="date" name="date"></div>
-        <div class="field"><label>Preferred time</label><input type="time" name="time"></div>
-      </div>
-
-      <div class="field">
-        <label>Number of guests</label>
-        <input type="number" name="guests" id="guestsInput" min="0" placeholder="e.g. 0" required>
-        <p class="hint">The Minute Chapel: up to 6. Simply Eloped: up to 20. (Just the Two of Us is couple-only.)</p>
-      </div>
-
-      <!-- Witnesses: appears when there are 0 guests -->
-      <div class="field" id="witnessField" style="display:none">
-        <label>Oregon requires two witnesses &mdash; do you need us to provide them?</label>
-        <select name="witnesses" id="witnessSelect">
-          <option value="">Select&hellip;</option>
-          <option value="No, we'll bring our own">No &mdash; we&rsquo;ll bring our own two witnesses</option>
-          <option value="Yes, provide 1 witness (+$25)">Yes &mdash; provide 1 witness (+$25)</option>
-          <option value="Yes, provide 2 witnesses (+$50)">Yes &mdash; provide 2 witnesses (+$50)</option>
-        </select>
-        <p class="hint">Oregon requires two witnesses total. If fewer than two of your guests can serve as witnesses, tell us how many to provide ($25 per person) so we can arrange them.</p>
-      </div>
-
-      <div class="field">
-        <label>Add-ons (optional)</label>
-        <div class="addons">
-          <label><input type="checkbox" name="addon" value="Custom vows"> Custom vows &mdash; $25</label>
-          <label><input type="checkbox" name="addon" value="Photo add-on"> Photo add-on &mdash; $25</label>
-          <label><input type="checkbox" name="addon" value="Keepsake marriage certificate"> Keepsake certificate (commemorative) &mdash; $25</label>
-          <label><input type="checkbox" name="addon" value="First dance"> First dance (speaker + recorded) &mdash; $25</label>
-        </div>
-        <p class="hint">Photo add-on: we photograph your ceremony on our device and upload to a private Google Drive folder (one week to download before it&rsquo;s deleted). First dance: we supply the speaker and record it &mdash; the video goes to a private Google Drive folder (one week to download before it&rsquo;s deleted). Each add-on is $25.</p>
-      </div>
-
-      <!-- Drapery color: appears only for The Minute Chapel (the service with the backdrop) -->
-      <div class="field" id="draperyField" style="display:none">
-        <label>Backdrop drapery color (The Minute Chapel)</label>
-        <select name="drapery" id="draperySelect">
-          <option value="">Choose Ivory or Navy Blue&hellip;</option>
-          <option value="Ivory">Ivory</option>
-          <option value="Navy Blue">Navy Blue</option>
-        </select>
-        <p class="hint">Choose the drapery color for your styled backdrop.</p>
-      </div>
-
-      <div class="field">
-        <label>Do you already have your Oregon marriage license?</label>
-        <select name="hasLicense" id="licenseSelect" required>
-          <option value="">Select&hellip;</option>
-          <option value="Yes">Yes, we have it</option>
-          <option value="Not yet">Not yet</option>
-        </select>
-      </div>
-
-      <div class="field" id="countyField" style="display:none">
-        <label>Issuing county</label>
-        <input type="text" name="county" placeholder="e.g. Washington County">
-      </div>
-
-      <div class="field">
-        <label class="check-line"><input type="checkbox" name="confirmWait" required> I understand Oregon marriage licenses are not valid until 3 days (72 hours) after they are issued, unless a judge waives the waiting period.</label>
-      </div>
-
-      <div class="field">
-        <label class="check-line"><input type="checkbox" name="confirmID" required> We &mdash; and any witnesses we bring &mdash; will bring valid government-issued photo ID to the appointment.</label>
-      </div>
-
-      <div class="field">
-        <label>Please share any additional details you&rsquo;d like us to know</label>
-        <textarea name="notes" placeholder="Custom requests, questions, anything that would make your moment special&hellip;" required></textarea>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-lg">Request Your Date</button>
-      <p class="hint" style="margin-top:12px">This form sends your request to our team (Supabase &rarr; Make &rarr; email, like your other sites). We&rsquo;ll confirm availability, then send a secure Square link for your deposit to lock in the date.</p>
-    </form>
+    <div class="acuity-embed">
+      <iframe src="https://app.acuityscheduling.com/schedule.php?owner=40142400" title="Schedule your Married In Moments ceremony" width="100%" height="800" frameborder="0"></iframe>
+      <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+    </div>
 
     <p class="deposit-note">
       A deposit secures your date and time and applies toward your total. Deposits: $50 (Just the Two of Us), $75 (The Minute Chapel), $100 (Simply Eloped).
       By booking you agree to our <a href="terms.html" style="color:var(--gold-deep)">Terms &amp; Conditions</a>.
     </p>
 
-    <!--
-      Optional: to use Acuity's native scheduler instead of this form, drop the embed here:
-      <iframe src="https://app.acuityscheduling.com/schedule.php?owner=XXXXXXXX" width="100%" height="800" frameborder="0"></iframe>
-      <script src="https://embed.acuityscheduling.com/js/embed.js"></script>
-    -->
   </div>
 </section>
 
@@ -187,46 +84,6 @@
   </div>
 </footer>
 
-<script>
-  (function () {
-    var svc = document.getElementById('serviceSelect');
-    var drapery = document.getElementById('draperyField');
-    var loc = document.getElementById('locationField');
-    var guests = document.getElementById('guestsInput');
-    var witness = document.getElementById('witnessField');
-    function updateDrapery() {
-      // Only The Minute Chapel has the backdrop, so only it shows (and requires) the drapery color menu
-      var show = (svc && svc.value === 'chapel');
-      drapery.style.display = show ? 'block' : 'none';
-      var dsel = document.getElementById('draperySelect');
-      if (dsel) { if (show) { dsel.setAttribute('required', 'required'); } else { dsel.removeAttribute('required'); } }
-    }
-    function updateWitness() {
-      if (!guests || !witness) return;
-      var v = String(guests.value).trim();
-      var n = parseInt(v, 10);
-      var show = (v === '' || (!isNaN(n) && n < 2));
-      witness.style.display = show ? 'block' : 'none';
-      var wsel = document.getElementById('witnessSelect');
-      if (wsel) { if (show) { wsel.setAttribute('required', 'required'); } else { wsel.removeAttribute('required'); } }
-    }
-    if (guests) guests.addEventListener('input', updateWitness);
-    updateWitness();
-    var license = document.getElementById('licenseSelect');
-    var county = document.getElementById('countyField');
-    function updateCounty() {
-      if (county) county.style.display = (license && license.value === 'Yes') ? 'block' : 'none';
-    }
-    if (license) license.addEventListener('change', updateCounty);
-    updateCounty();
-    if (svc) {
-      svc.addEventListener('change', function () {
-        if (loc) loc.style.display = (svc.value === 'eloped') ? 'block' : 'none';
-        updateDrapery();
-      });
-    }
-  })();
-</script>
 <script src="main.js"></script>
 </body>
 </html>
