@@ -31,6 +31,13 @@ Built and shipped the county & city SEO pages ("own the space" build). All 10 pa
 - Footer "Beaverton, Oregon · By appointment" dead `#` link fixed → links to service-areas.html on all 15 pages.
 - Full QA re-run on all 15 pages: PASSED (canonicals, valid JSON-LD, FAQ schema match, no broken/dead links, no truncation).
 
+## ✅ Also completed (round 3 — GBP verified, address public)
+- **GBP for MIM is VERIFIED** (2026-08-14). Listing not yet propagated to Maps/search (normal, takes days).
+- **Decision: full street address published sitewide** — MIM chapel space = same address as ORF: **20001 SW Tualatin Valley Hwy, Beaverton, OR 97003**.
+- Address added to: LocalBusiness schema (street + zip + exact geo 45.4958333,-122.8828163), homepage map (now pinned to the address, z=15, + "Get Directions" button), footer on all 15 pages (links to Google Maps), contact page, Beaverton page FAQ (visible + schema).
+- QA re-run: ALL PASSED, address on 15/15 pages.
+- **TODO once listing propagates:** grab the ?cid= link from the GBP dashboard (Share → copy link) and swap it in for the maps?q= links + embed (ORF pattern), add it as sameAs in LocalBusiness schema. Then start collecting reviews → add aggregateRating schema once real reviews exist.
+
 ## 🔑 Key facts locked in (verified 2026-08-14)
 - **Washington County license fee is now $85** (raised from $60 on July 1, 2026). Multnomah & Clackamas still **$60**. This price gap + statewide validity is the core marketing hook on all county pages ("apply where it's easiest — or cheapest").
 - Oregon license: valid **statewide**, effective **3 days** after application, valid **60 days** (ORS 106.077). Officiant returns license within **5 business days** — MIM handles via priority mailing.
