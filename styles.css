@@ -271,6 +271,20 @@ h1,h2,h3,h4{
 .footer-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:22px;text-align:center;color:#A8998A;font-size:.85rem}
 .footer-bottom a{color:#C9B8A8;display:inline}
 
+/* ---------- Footer newsletter ---------- */
+.newsletter{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:34px}
+.newsletter-inner{max-width:520px;margin:0 auto;text-align:center;position:relative}
+.newsletter h4{font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:.75rem;color:var(--gold)}
+.newsletter p{color:#C9B8A8;font-size:.92rem}
+.newsletter-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.newsletter-form input[type="email"]{
+  flex:1 1 240px;padding:13px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.25);
+  font-family:'Montserrat',sans-serif;font-size:.98rem;background:rgba(255,255,255,.08);color:#fff;
+}
+.newsletter-form input[type="email"]::placeholder{color:#A8998A}
+.newsletter-form .btn{padding:13px 26px}
+.newsletter-msg{color:var(--peach)}
+
 /* ---------- Booking / embed ---------- */
 .embed-note{
   max-width:820px;margin:0 auto 30px;text-align:center;color:var(--ink-soft);

@@ -96,20 +96,26 @@
 
       <div class="contact-card">
         <h3>Send a Message</h3>
-        <form onsubmit="return false;">
-          <div class="field"><label>Name</label><input type="text" placeholder="Your name" required></div>
-          <div class="field"><label>Email</label><input type="email" placeholder="you@email.com" required></div>
-          <div class="field"><label>Which service are you interested in?</label>
-            <select>
+        <div id="formSent" hidden style="background:#f3faf5;border:1px solid #bfe3c8;border-radius:10px;padding:16px 18px;margin-bottom:16px">
+          <strong>Thank you &mdash; your message is on its way.</strong><br>We&rsquo;ll get back to you within one business day.
+        </div>
+        <form id="contactForm" action="/api/contact" method="POST">
+          <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" placeholder="Your name" required></div>
+          <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" placeholder="you@email.com" required></div>
+          <div class="field"><label for="cf-phone">Phone <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label><input id="cf-phone" name="phone" type="tel" placeholder="(555) 555-5555"></div>
+          <div class="field"><label for="cf-service">Which service are you interested in?</label>
+            <select id="cf-service" name="service">
               <option>Just the Two of Us &mdash; from $125</option>
               <option>The Minute Chapel &mdash; from $175</option>
               <option>Simply Eloped &mdash; $250</option>
               <option>Not sure yet</option>
             </select>
           </div>
-          <div class="field"><label>Message</label><textarea placeholder="Tell us about your moment..."></textarea></div>
+          <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Tell us about your moment..." required></textarea></div>
+          <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this field blank<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+          <input type="hidden" name="referrer"><input type="hidden" name="landing">
+          <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
           <button class="btn btn-primary" type="submit">Send Message</button>
-          <p style="font-size:.82rem;color:var(--ink-soft);margin-top:12px">This form will connect to your lead-capture pipeline (Supabase &rarr; Make &rarr; email), just like your other sites.</p>
         </form>
       </div>
 
@@ -147,5 +153,6 @@
 </footer>
 
 <script src="main.js"></script>
+<script src="widget.js" defer></script>
 </body>
 </html>
