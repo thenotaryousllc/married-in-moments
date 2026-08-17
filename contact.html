@@ -102,7 +102,9 @@
         <form id="contactForm" action="/api/contact" method="POST">
           <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" placeholder="Your name" required></div>
           <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" placeholder="you@email.com" required></div>
-          <div class="field"><label for="cf-phone">Phone <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label><input id="cf-phone" name="phone" type="tel" placeholder="(555) 555-5555"></div>
+          <div class="field"><label for="cf-phone">Phone <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label><input id="cf-phone" name="phone" type="tel" placeholder="(555) 555-5555">
+            <p style="font-size:.78rem;color:var(--ink-soft);margin-top:6px;line-height:1.5">By providing your phone number, you agree to receive text messages from Married In Moments about your inquiry. Msg &amp; data rates may apply; message frequency varies. Reply STOP to opt out, HELP for help. See our <a href="terms.html#privacy" style="color:var(--gold-deep)">Privacy Policy</a> &amp; <a href="terms.html#sms-terms" style="color:var(--gold-deep)">SMS Terms</a>.</p>
+          </div>
           <div class="field"><label for="cf-service">Which service are you interested in?</label>
             <select id="cf-service" name="service">
               <option>Just the Two of Us &mdash; from $125</option>
