@@ -1,15 +1,60 @@
 // Married In Moments — mobile nav toggle
+// Full-screen overlay menu: opaque, scroll-locked, X to close, Escape to close.
+// Runs on every page (all pages load main.js), so the fix is sitewide.
 (function () {
   var toggle = document.getElementById('navToggle');
   var links = document.getElementById('navLinks');
-  if (toggle && links) {
-    toggle.addEventListener('click', function () {
-      links.classList.toggle('open');
-    });
-    links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () { links.classList.remove('open'); });
-    });
+  if (!toggle || !links) return;
+
+  // Inject the X close button so all pages get it without editing each HTML file.
+  var close = links.querySelector('.nav-close');
+  if (!close) {
+    close = document.createElement('button');
+    close.className = 'nav-close';
+    close.type = 'button';
+    close.setAttribute('aria-label', 'Close menu');
+    close.innerHTML = '&times;';
+    links.insertBefore(close, links.firstChild);
   }
+
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'navLinks');
+
+  function openMenu() {
+    links.classList.add('open');
+    document.body.classList.add('nav-open');   // scroll lock behind the overlay
+    toggle.setAttribute('aria-expanded', 'true');
+    close.focus();
+  }
+
+  function closeMenu(returnFocus) {
+    links.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    if (returnFocus) toggle.focus();
+  }
+
+  toggle.addEventListener('click', function () {
+    if (links.classList.contains('open')) closeMenu(true);
+    else openMenu();
+  });
+
+  close.addEventListener('click', function () { closeMenu(true); });
+
+  Array.prototype.forEach.call(links.querySelectorAll('a'), function (a) {
+    a.addEventListener('click', function () { closeMenu(false); });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.key === 'Esc') && links.classList.contains('open')) {
+      closeMenu(true);
+    }
+  });
+
+  // If the viewport grows back to desktop while the menu is open, reset cleanly.
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 960 && links.classList.contains('open')) closeMenu(false);
+  });
 })();
 
 // Contact form — fill tracking fields + show the thank-you banner after redirect
