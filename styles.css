@@ -361,9 +361,14 @@ h1,h2,h3,h4{
     transform:translateX(100%);
     transition:transform .25s ease;
     box-shadow:none;
-    z-index:120;
+    /* above the chat widget, which sits at z-index:99999 in widget.js */
+    z-index:100000;
   }
   .nav-links.open{transform:translateX(0)}
+
+  /* Hide the chat bubble/panel while the menu is open so nothing floats over it */
+  body.nav-open #nb-bubble,
+  body.nav-open #nb-panel{display:none !important}
 
   .nav-links a{
     font-size:1.15rem;
@@ -383,7 +388,8 @@ h1,h2,h3,h4{
 
   /* X close button — injected by main.js so every page gets it */
   .nav-close{
-    position:absolute;
+    /* fixed, not absolute: the panel scrolls, and the X must stay put */
+    position:fixed;
     top:18px;
     right:18px;
     width:44px;
