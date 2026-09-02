@@ -87,6 +87,9 @@ h1,h2,h3,h4{
 .btn-ghost:hover{background:var(--gold);color:#fff}
 .btn-lg{padding:18px 44px;font-size:1.02rem}
 
+/* Deep-linked headings must clear the sticky header when jumped to. */
+.prose h2[id]{scroll-margin-top:110px}
+
 /* ---------- Header / Nav ---------- */
 .site-header{
   position:sticky;top:0;z-index:50;
