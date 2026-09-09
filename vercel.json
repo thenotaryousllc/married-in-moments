@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/es", "destination": "/oficiante-de-bodas-en-espanol.html", "permanent": true },
+    { "source": "/espanol", "destination": "/oficiante-de-bodas-en-espanol.html", "permanent": true }
+  ]
+}

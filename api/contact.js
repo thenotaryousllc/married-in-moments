@@ -21,6 +21,9 @@ export default async function handler(req, res) {
   // Honeypot: real people leave this blank.
   if (b.company_website) { done(); return; }
 
+  // Ceremony language (English / Español / Bilingual) — emailed only; not a mim_contacts column.
+  const language = String(b.language || '').slice(0, 60);
+
   const row = {
     name: (b.name || '').slice(0, 200),
     email: (b.email || '').slice(0, 200),
@@ -43,7 +46,8 @@ export default async function handler(req, res) {
     '<p><strong>Name:</strong> ' + esc(row.name) + '<br>' +
     '<strong>Email:</strong> <a href="mailto:' + esc(row.email) + '">' + esc(row.email) + '</a><br>' +
     (row.phone ? '<strong>Phone:</strong> <a href="tel:' + esc(row.phone) + '">' + esc(row.phone) + '</a><br>' : '') +
-    '<strong>Service:</strong> ' + esc(row.service) + '</p>' +
+    '<strong>Service:</strong> ' + esc(row.service) + '<br>' +
+    (language ? '<strong>Ceremony language:</strong> ' + esc(language) + '</p>' : '</p>') +
     '<p><strong>Message:</strong><br>' + esc(row.message).replace(/\n/g, '<br>') + '</p>' +
     '<p style="color:#8a7580;font-size:13px">Source: marriedinmoments.com contact form' +
     (row.landing ? ' · Landing: ' + esc(row.landing) : '') + '</p></div>';
@@ -57,7 +61,7 @@ export default async function handler(req, res) {
         subject: '💍 MIM inquiry — ' + row.name + (row.service ? ' (' + row.service + ')' : ''),
         body,
         push_title: 'MIM: new inquiry',
-        push_message: row.name + ' — ' + (row.service || 'no service selected')
+        push_message: row.name + ' — ' + (row.service || 'no service selected') + (language && language !== 'English' ? ' — ' + language : '')
       })
     });
   } catch (e) { /* non-fatal */ }

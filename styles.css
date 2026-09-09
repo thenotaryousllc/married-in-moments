@@ -517,3 +517,67 @@ h1,h2,h3,h4{
 @media(max-width:600px){.book-form .addons{grid-template-columns:1fr}}
 .deposit-note{max-width:720px;margin:18px auto 0;font-size:.86rem;color:var(--ink-soft);text-align:center}
 @media(max-width:600px){.book-form .row{grid-template-columns:1fr}}
+
+/* =========================================================
+   Spanish-language service (added 2026-09-08)
+   ========================================================= */
+/* "Español" link in the nav — subtle pill so Spanish speakers spot it fast */
+.nav-links a.nav-es{
+  color:var(--gold-deep);
+  border:1px solid rgba(199,110,132,.45);
+  border-radius:999px;
+  padding:6px 14px;
+  font-size:.86rem;
+  letter-spacing:.4px;
+}
+.nav-links a.nav-es:hover{background:var(--peach-soft);color:var(--coral-deep)}
+@media (max-width:960px){
+  .nav-links a.nav-es{
+    border:none;border-bottom:1px solid rgba(199,110,132,.18);
+    border-radius:0;padding:16px 4px;font-size:1.15rem;color:var(--gold-deep);
+  }
+}
+
+/* Bilingual notice band (homepage + services) */
+.es-band{background:var(--white)}
+.es-band .es-card{
+  max-width:900px;margin:0 auto;
+  background:linear-gradient(135deg,var(--cream-2),var(--white));
+  border:1px solid rgba(199,110,132,.28);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:40px 36px;text-align:center;
+}
+.es-band .es-card h2{font-size:clamp(1.7rem,3.2vw,2.4rem);margin-bottom:10px}
+.es-band .es-card p{color:var(--ink-soft);max-width:640px;margin:0 auto}
+.es-band .es-card p.en{font-size:.92rem;margin-top:12px}
+.es-band .es-card .hero-cta{margin-top:24px}
+
+/* Three-step "how to book" grid used on the Spanish page */
+.steps.steps-3{grid-template-columns:repeat(3,1fr);max-width:900px;margin-inline:auto}
+@media (max-width:960px){.steps.steps-3{grid-template-columns:1fr;max-width:420px}}
+
+/* Language hint above the booking embed */
+.lang-note{
+  max-width:720px;margin:0 auto 22px;
+  background:var(--white);border:1px solid rgba(199,110,132,.28);border-radius:12px;
+  padding:16px 20px;font-size:.95rem;color:var(--ink);text-align:center;
+}
+.lang-note strong{color:var(--gold-deep)}
+
+/* Desktop nav: keep every link on one line now that there are six of them */
+@media (min-width:961px){
+  .nav-links{gap:22px;flex-shrink:0}
+  .nav-links a{white-space:nowrap}
+  .brand{margin-right:16px}
+}
+/* Hamburger: 44x44 tap target (WCAG) — the glyph stays the same size */
+.nav-toggle{min-width:44px;min-height:44px;display:none;align-items:center;justify-content:center;padding:0;margin:-7px -10px -7px 0}
+@media (max-width:960px){.nav-toggle{display:flex}}
+/* Contact cards: long emails/addresses wrap instead of forcing horizontal scroll on small phones */
+.contact-grid{min-width:0}
+.contact-card{min-width:0;overflow-wrap:anywhere}
+@media (max-width:520px){.contact-card{padding:26px 20px}}
+/* Interior page heroes: deeper scrim + soft shadow so white text over the photo
+   meets WCAG AA (measured 2.1–2.8:1 before; homepage hero already fixed the same way) */
+.page-hero .ph-overlay{background:linear-gradient(180deg,rgba(38,26,32,.74),rgba(38,26,32,.66) 50%,rgba(120,44,66,.78))}
+.page-hero.has-photo h1,.page-hero.has-photo .script{text-shadow:0 2px 22px rgba(30,18,24,.75)}
+.page-hero.has-photo p{text-shadow:0 1px 3px rgba(30,18,24,.9),0 0 18px rgba(30,18,24,.6)}

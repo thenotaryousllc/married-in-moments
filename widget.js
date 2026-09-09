@@ -10,7 +10,7 @@
   var accentDeep = "#C4536A";  // deeper rose (site --coral-deep)
   var accentSoft = "#F6D9DD";  // soft peach (site --peach-soft)
   var greeting =
-    "Hi there! I can help with our ceremony packages, Oregon marriage licenses, and booking your moment. What would you like to know?";
+    "Hi there! I can help with our ceremony packages, Oregon marriage licenses, and booking your moment. What would you like to know? También puedo ayudarte en español.";
 
   var messages = [];
   var sessionId =
