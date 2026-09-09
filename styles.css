@@ -639,6 +639,7 @@ h1,h2,h3,h4{
 .extra-wide h3{font-size:1.8rem;margin:0 4px 4px}
 .extra-wide p{margin:0 4px;max-width:720px}
 .extra-wide .xprice{margin:0 4px 6px;font-size:1.25rem;white-space:nowrap}
+.extra-wide .xw-note{font-size:.8rem;color:var(--ink-soft);margin-top:10px;opacity:.9}
 @media (max-width:640px){
   .extra-wide .xw-body{grid-template-columns:1fr}
   .extra-wide .xprice{margin-top:10px}
