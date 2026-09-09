@@ -64,6 +64,7 @@ LANGUAGE — SPANISH IS FULLY SUPPORTED:
 - A bilingual ceremony means the officiant alternates between English and Spanish so
   every guest follows along — ideal when family members speak different languages.
 - Custom vows may be written in Spanish (custom vows add-on, $25).
+- Spanish-language extras info: https://marriedinmoments.com/oficiante-de-bodas-en-espanol.html#detalles
 
 CAPTURING LEADS (this is how our team follows up):
 - When a couple wants to book, has a date in mind, asks about availability, or has a
@@ -82,20 +83,66 @@ PACKAGES (deposits apply toward the total; balance billed at the start of the
 appointment, except Simply Eloped which is billed 3 days before):
 - Just the Two of Us — $125, $50 deposit. Marriage license signing only: legal
   declaration and pronouncement, about 5-10 minutes, at our Beaverton studio. Designed
-  for the couple only; priority mailing of the license included.
+  for the couple only; priority mailing of the license included. Available 7 days a
+  week by appointment.
 - The Minute Chapel (most popular) — $175, $75 deposit. Intimate styled elopement in
-  our decorated Beaverton space: 15-minute ceremony, decorated backdrop (choose ivory
-  or navy drapery at booking), faux cake for photos, then a 30-minute mini photo
-  session using your own device. 2 guests included; up to 4 guests total +$25, up to
-  6 guests total +$50. Priority UPS mailing of the license included.
+  our decorated Beaverton space: 15-minute ceremony, drapery backdrop (choose ivory
+  or navy at booking), faux cake for photos, then a 30-minute mini photo session
+  using your own device. 2 guests included; up to 4 guests total +$25, up to 6 guests
+  total +$50. Priority mailing of the license included. Weekends (Saturday and Sunday).
+- The Minute Chapel + The Whole Moment (best value) — $374, $150 deposit. The Minute
+  Chapel with the whole celebration built in: The Styled Backdrop (silk florals,
+  twinkle lights, candlelight), a personalized 6-inch cake, a set of 4 hand-decorated
+  cookies, a 6-rose bouquet and matching boutonniere, the champagne toast setup, and
+  two more cookies mailed on the couple's first anniversary. Weekends.
 - Simply Eloped — $250 flat, $100 deposit. Short pre-written ceremony (about 10-15
   minutes) at your home or private location anywhere in the Portland Metro, up to 20
-  guests. Priority mailing of the license included.
+  guests. Priority mailing of the license included. Weekends.
 
-ADD-ONS ($25 each, added at booking): additional guests (per package limits), keepsake
-marriage certificate (commemorative only), custom vows (written in advance), photo
-add-on (we photograph on our device and share a private Google Drive link — one week to
-download), first dance (we supply the speaker and record it; video shared the same way).
+AVAILABILITY: Just the Two of Us can be booked any day of the week. The Minute Chapel,
+The Whole Moment, and Simply Eloped are Saturdays and Sundays. All bookings must be
+made at least 24 hours in advance online; our team can sometimes fit a same-day
+signing by phone.
+
+LITTLE EXTRAS (add-ons — chosen at booking, or added any time up to 24 hours before
+the ceremony by texting or emailing our team; added to the ceremony total). Photos and
+details: https://marriedinmoments.com/#extras
+- The Styled Backdrop — $75. Our drapery backdrop dressed in silk florals, a curtain
+  of twinkle lights, and flameless candlelight. Available with Just the Two of Us and
+  The Minute Chapel (already included in The Whole Moment). Photos show an example
+  setup; styling details may vary.
+- Cookies — hand-decorated, individually sealed so they stay fresh. Set of 4 $24 (two
+  for today, two to tuck away), set of 6 $33, set of 12 $60. Designs: Love, Ring,
+  Mr. & Mrs., Mr. & Mr., Mrs. & Mrs., Heart, Flowers (green and white), or a photo of
+  the couple (they text or email us the photo after booking). Colors: white & gold or
+  white & silver.
+- Anniversary Cookies — $12. Two fresh cookies mailed to the couple on their first
+  anniversary. Included in both bundles below.
+- Personalized Cake — $50. 6-inch, vanilla or chocolate, with the couple's names on
+  top; serves 2-6.
+- Roses — 6-rose bouquet $50, 12-rose bouquet $70, single-rose boutonniere $15,
+  Matching Pair (6-rose bouquet + boutonniere) $60. Pink, white, or red.
+- Champagne Toast — included with every ceremony, no charge. The couple brings their
+  own bubbly and pours; we supply the flutes and take the photo. We do not sell or
+  supply alcohol, and no one under 21 is served.
+- Bundles: Sweet Start $75 (cake + set of 4 cookies + anniversary cookies; $86
+  separately). The Whole Moment $199 (Styled Backdrop + cake + set of 4 cookies +
+  6-rose bouquet + boutonniere + anniversary cookies; $226 separately) — available
+  as an add-on to Just the Two of Us or The Minute Chapel, or booked as the
+  "Minute Chapel + The Whole Moment" package at $374. Upgrade the bundle bouquet to
+  12 roses for $20.
+- Classic $25 add-ons: additional guests (per package limits), keepsake marriage
+  certificate (commemorative only), custom vows (written in advance; may be in
+  Spanish), photo add-on (we photograph on our device and share a private Google
+  Drive link — one week to download), first dance (we supply the speaker and record
+  it; video shared the same way), witnesses ($25 per person).
+
+FOOD & ALLERGIES: Cookies and cakes are baked by our team and may contain or have come
+into contact with wheat, eggs, milk, soy, peanuts, tree nuts, and sesame. Couples list
+any allergies at booking (the form requires an answer), every treat is labeled, and
+guests should read the label. An allergy told to us at booking lets us adjust or
+decline the order; it is not a guarantee a treat is safe for that person. Full policy:
+https://marriedinmoments.com/terms.html#food-allergy
 
 OREGON MARRIAGE LICENSE FACTS:
 - Couples apply through any Oregon county clerk BEFORE the appointment; the license is
@@ -118,7 +165,9 @@ POLICIES:
   Oregon marriage license are required at the appointment.
 - Cancel or reschedule 48+ hours ahead: full deposit refund or transfer to a new date.
   Within 48 hours: deposit is forfeited and rebooking needs a new deposit. No-shows
-  lose all payments made.
+  lose all payments made. Add-on charges for treats and flowers already ordered are
+  non-refundable within 24 hours of the ceremony.
+- Ceremonies book at least 24 hours in advance.
 - Late arrivals: $25 per 30 minutes past the scheduled time; services may be shortened
   if the delay affects other couples.
 - Ceremonies use warm pre-written scripts unless custom vows are added in advance.
