@@ -49,11 +49,12 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="site-header">
   <nav class="nav">
     <a href="index.html" class="brand">
-      <img src="images/logo-mark.png" alt="Married In Moments floral wreath monogram logo" class="brand-logo" width="46" height="46">
+      <img src="images/logo-mark.png" alt="" class="brand-logo" width="46" height="46">
       <span class="brand-text">
         <span class="mark">Married In Moments</span>
         <span class="sub">Beaverton &middot; Portland Metro</span>
@@ -71,6 +72,7 @@
     <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
   </nav>
 </header>
+<main id="main" tabindex="-1">
 
 <section class="page-hero has-photo">
   <img class="ph-bg" src="images/banner.jpg" alt="">
@@ -87,23 +89,23 @@
     <div class="contact-grid">
 
       <div class="contact-card">
-        <h3>Get in Touch</h3>
+        <h2 class="was-h3">Get in Touch</h2>
         <p><strong>Email:</strong><br><a href="mailto:info@marriedinmoments.com" style="color:var(--gold-deep)">info@marriedinmoments.com</a></p>
         <p><strong>Text or call:</strong><br><a href="tel:+19717152212">(971) 715-2212</a></p>
-        <p><strong>Where:</strong><br><a href="https://www.google.com/maps?q=Married+In+Moments,+20001+SW+Tualatin+Valley+Hwy,+Beaverton,+OR+97003" target="_blank" rel="noopener" style="color:var(--gold-deep)">20001 SW Tualatin Valley Hwy, Beaverton, OR 97003</a><br>Serving the Portland Metro &amp; surrounding counties &mdash; by appointment only</p>
+        <p><strong>Where:</strong><br><a href="https://www.google.com/maps?q=Married+In+Moments,+20001+SW+Tualatin+Valley+Hwy,+Beaverton,+OR+97003" target="_blank" rel="noopener" style="color:var(--gold-deep)">20001 SW Tualatin Valley Hwy, Beaverton, OR 97003 <span class="sr-only">(opens in new tab)</span></a><br>Serving the Portland Metro &amp; surrounding counties &mdash; by appointment only</p>
         <p><strong>Hours:</strong><br>By appointment only</p>
         <div style="margin-top:20px"><a href="book.html" class="btn btn-primary">Book Your Ceremony</a></div>
       </div>
 
       <div class="contact-card">
-        <h3>Send a Message</h3>
+        <h2 class="was-h3">Send a Message</h2>
         <div id="formSent" hidden style="background:#f3faf5;border:1px solid #bfe3c8;border-radius:10px;padding:16px 18px;margin-bottom:16px">
           <strong>Thank you &mdash; your message is on its way.</strong><br>We&rsquo;ll get back to you within one business day.
         </div>
         <form id="contactForm" action="/api/contact" method="POST">
-          <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" placeholder="Your name" required></div>
-          <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" placeholder="you@email.com" required></div>
-          <div class="field"><label for="cf-phone">Phone <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label><input id="cf-phone" name="phone" type="tel" placeholder="(555) 555-5555">
+          <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div>
+          <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required></div>
+          <div class="field"><label for="cf-phone">Phone <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label><input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 555-5555">
             <p style="font-size:.78rem;color:var(--ink-soft);margin-top:6px;line-height:1.5">By providing your phone number, you agree to receive text messages from Married In Moments about your inquiry. Msg &amp; data rates may apply; message frequency varies. Reply STOP to opt out, HELP for help. See our <a href="terms.html#privacy" style="color:var(--gold-deep)">Privacy Policy</a> &amp; <a href="terms.html#sms-terms" style="color:var(--gold-deep)">SMS Terms</a>.</p>
           </div>
           <div class="field"><label for="cf-service">Which service are you interested in?</label>
@@ -133,6 +135,7 @@
   </div>
 </section>
 
+</main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -141,7 +144,7 @@
         <p>Simple. Legal. Stress-free marriage services in Beaverton, Oregon &mdash; serving couples across the Portland Metro.</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h3 class="was-h4">Explore</h3>
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="service-areas.html">Areas We Serve</a>
@@ -151,10 +154,10 @@
         <a href="terms.html">Terms &amp; Conditions</a>
       </div>
       <div>
-        <h4>Connect</h4>
+        <h3 class="was-h4">Connect</h3>
         <a href="mailto:info@marriedinmoments.com">info@marriedinmoments.com</a>
         <a href="tel:+19717152212">Text or call: (971) 715-2212</a>
-        <a href="https://www.google.com/maps?q=Married+In+Moments,+20001+SW+Tualatin+Valley+Hwy,+Beaverton,+OR+97003" target="_blank" rel="noopener">20001 SW Tualatin Valley Hwy, Beaverton, OR &middot; By appointment</a>
+        <a href="https://www.google.com/maps?q=Married+In+Moments,+20001+SW+Tualatin+Valley+Hwy,+Beaverton,+OR+97003" target="_blank" rel="noopener">20001 SW Tualatin Valley Hwy, Beaverton, OR &middot; By appointment <span class="sr-only">(opens in new tab)</span></a>
       </div>
     </div>
     <div class="footer-bottom">
