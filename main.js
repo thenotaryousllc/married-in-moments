@@ -99,7 +99,7 @@
     '<input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">' +
     '<button class="btn btn-primary" type="submit">Sign Up</button>' +
     '</form>' +
-    '<p class="newsletter-msg" role="status" style="margin:10px 0 0;font-size:.88rem"></p>' +
+    '<p class="newsletter-msg" role="status" aria-live="polite" style="margin:10px 0 0;font-size:.88rem"></p>' +
     '</div>';
   footer.insertBefore(box, bottom || null);
 
@@ -127,7 +127,7 @@
       .then(function (res) {
         if (res.ok) {
           form.hidden = true;
-          msg.textContent = 'You’re on the list — welcome! Keep an eye on your inbox.';
+          msg.textContent = 'You’re on the list! Check your inbox for a little welcome note.';
         } else {
           btn.disabled = false;
           msg.textContent = (res.d && res.d.error) || 'Something went wrong — please try again.';
@@ -137,5 +137,51 @@
         btn.disabled = false;
         msg.textContent = 'Something went wrong — please try again.';
       });
+  });
+})();
+
+// Homepage "Join the List" form (and any form marked data-newsletter) → same /api/newsletter endpoint
+(function () {
+  document.querySelectorAll('form[data-newsletter]').forEach(function (form) {
+    var msg = form.parentNode.querySelector('.capture-msg');
+    var say = function (t) { if (msg) msg.textContent = t; };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = form.querySelector('input[name="email"]');
+      var email = input.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        input.setAttribute('aria-invalid', 'true');
+        say('Please enter a valid email address.');
+        input.focus();
+        return;
+      }
+      input.removeAttribute('aria-invalid');
+      var btn = form.querySelector('button');
+      btn.disabled = true;
+      say('One moment…');
+      fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          company_website: (form.querySelector('input[name="company_website"]') || {}).value || '',
+          landing: location.pathname,
+          source: 'mim-homepage'
+        })
+      }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (res.ok) {
+            form.hidden = true;
+            say('You’re on the list! Check your inbox for a little welcome note.');
+          } else {
+            btn.disabled = false;
+            say((res.d && res.d.error) || 'Something went wrong — please try again.');
+          }
+        })
+        .catch(function () {
+          btn.disabled = false;
+          say('Something went wrong — please try again.');
+        });
+    });
   });
 })();

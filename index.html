@@ -472,10 +472,12 @@
   <div class="wrap">
     <h2>Planning Your &ldquo;I Do&rdquo;? Stay in the Know.</h2>
     <p>Join our list for booking tips, Oregon license reminders, and little ways to make your moment special.</p>
-    <form onsubmit="return false;">
-      <label for="nl-email" class="sr-only">Your email address</label><input id="nl-email" type="email" placeholder="Your email address" autocomplete="email" required>
+    <form data-newsletter novalidate>
+      <label for="nl-email" class="sr-only">Your email address</label><input id="nl-email" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
+      <input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <button class="btn btn-primary" type="submit">Join the List</button>
     </form>
+    <p class="capture-msg" role="status" aria-live="polite" style="margin:14px auto 0;font-weight:700"></p>
   </div>
 </section>
 

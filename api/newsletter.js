@@ -2,7 +2,11 @@
 // Fetch-friendly JSON endpoint: saves to Supabase (upsert on email) and pings Make
 // so Shavon gets an email + Pushover heads-up.
 //
-// Env vars: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, MIM_MAKE_WEBHOOK (optional).
+// Env vars: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, MIM_MAKE_WEBHOOK (optional),
+//   MAILERLITE_API_KEY   MailerLite → Integrations → API → Generate new token
+//   MAILERLITE_GROUP_ID  MailerLite → Subscribers → Groups → "MIM Newsletter" → the number in the URL
+// When both MailerLite vars are set, every signup is added to that group, which starts
+// the "MIM Welcome" automation (the welcome email) in MailerLite.
 // Table: public.mim_newsletter_signups. Make scenario: "MIM Website Lead → Email + Pushover Alert".
 
 const esc = (s) => String(s || '').replace(/[&<>"']/g, (c) => ({
@@ -24,7 +28,7 @@ export default async function handler(req, res) {
     email,
     name: String(b.name || '').slice(0, 200),
     landing: String(b.landing || '').slice(0, 200),
-    source: 'mim-newsletter'
+    source: String(b.source || 'mim-newsletter').slice(0, 60)
   };
 
   const webhook = process.env.MIM_MAKE_WEBHOOK || 'https://hook.us2.make.com/qmi46skmdru6eboq54htxn8aj18fv2gb';
@@ -47,8 +51,31 @@ export default async function handler(req, res) {
     });
   } catch (e) { /* non-fatal */ }
 
+  // 1) MailerLite — the list we actually send newsletters from.
+  let mailerliteOk = false;
+  if (process.env.MAILERLITE_API_KEY && process.env.MAILERLITE_GROUP_ID) {
+    try {
+      const ml = await fetch('https://connect.mailerlite.com/api/subscribers', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + process.env.MAILERLITE_API_KEY,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          groups: [String(process.env.MAILERLITE_GROUP_ID)],
+          fields: row.name ? { name: row.name } : undefined
+        })
+      });
+      mailerliteOk = ml.ok;
+      if (!ml.ok) console.error('MailerLite error', ml.status, await ml.text());
+    } catch (e) { console.error('MailerLite exception', String(e)); }
+  }
+
+  // 2) Supabase — our own backup copy of the list.
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    res.status(200).json({ ok: true });
+    res.status(200).json({ ok: true, mailerlite: mailerliteOk });
     return;
   }
 
@@ -66,9 +93,10 @@ export default async function handler(req, res) {
         body: JSON.stringify(row)
       }
     );
-    if (resp.ok) { res.status(200).json({ ok: true }); }
-    else { const detail = await resp.text(); res.status(502).json({ error: 'Could not save signup', detail }); }
+    if (resp.ok || mailerliteOk) { res.status(200).json({ ok: true, mailerlite: mailerliteOk }); }
+    else { const detail = await resp.text(); res.status(502).json({ error: 'Something went wrong — please try again.', detail }); }
   } catch (e) {
-    res.status(500).json({ error: 'Server error', detail: String(e) });
+    if (mailerliteOk) { res.status(200).json({ ok: true, mailerlite: true }); return; }
+    res.status(500).json({ error: 'Something went wrong — please try again.', detail: String(e) });
   }
 }
