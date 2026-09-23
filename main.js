@@ -68,6 +68,7 @@
     var params = new URLSearchParams(location.search);
     set('referrer', document.referrer);
     set('landing', location.pathname);
+    set('form_ts', String(Date.now())); // bot check: real browsers run this script
     set('utm_source', params.get('utm_source'));
     set('utm_medium', params.get('utm_medium'));
     set('utm_campaign', params.get('utm_campaign'));

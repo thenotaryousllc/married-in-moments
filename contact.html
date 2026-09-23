@@ -110,22 +110,22 @@
           </div>
           <div class="field"><label for="cf-service">Which service are you interested in?</label>
             <select id="cf-service" name="service">
-              <option>Just the Two of Us &mdash; from $125</option>
-              <option>The Minute Chapel &mdash; from $175</option>
-              <option>Simply Eloped &mdash; $250</option>
-              <option>Not sure yet</option>
+              <option value="Just the Two of Us — from $125">Just the Two of Us &mdash; from $125</option>
+              <option value="The Minute Chapel — from $175">The Minute Chapel &mdash; from $175</option>
+              <option value="Simply Eloped — $250">Simply Eloped &mdash; $250</option>
+              <option value="Not sure yet">Not sure yet</option>
             </select>
           </div>
           <div class="field"><label for="cf-language">Ceremony language <span style="font-weight:400;color:var(--ink-soft)" lang="es">/ Idioma de la ceremonia</span></label>
             <select id="cf-language" name="language">
-              <option>English</option>
-              <option lang="es">Español</option>
-              <option>Bilingual / Bilingüe (English + Español)</option>
+              <option value="English">English</option>
+              <option value="Español" lang="es">Español</option>
+              <option value="Bilingual / Bilingüe (English + Español)">Bilingual / Bilingüe (English + Español)</option>
             </select>
           </div>
           <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Tell us about your moment..." required></textarea></div>
           <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this field blank<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
-          <input type="hidden" name="referrer"><input type="hidden" name="landing">
+          <input type="hidden" name="form_ts"><input type="hidden" name="referrer"><input type="hidden" name="landing">
           <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
           <button class="btn btn-primary" type="submit">Send Message</button>
         </form>

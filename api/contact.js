@@ -21,6 +21,22 @@ export default async function handler(req, res) {
   // Honeypot: real people leave this blank.
   if (b.company_website) { done(); return; }
 
+  // Hard bot check: service/language must match the form's dropdowns exactly.
+  // Bots that scrape the raw HTML send "Simply Eloped &mdash; $250" (with the entity
+  // code) — a real browser never does. Silently drop those.
+  const SERVICES = ['Just the Two of Us — from $125', 'The Minute Chapel — from $175',
+    'Simply Eloped — $250', 'Not sure yet'];
+  const LANGUAGES = ['English', 'Español', 'Bilingual / Bilingüe (English + Español)'];
+  if (b.service && !SERVICES.includes(b.service)) { done(); return; }
+  if (b.language && !LANGUAGES.includes(b.language)) { done(); return; }
+
+  // Soft bot signals: still delivered (never lose a real couple), but flagged.
+  //  - form_ts is set by main.js, so a missing one means the page never ran in a browser
+  //  - under 3 seconds from page load to submit is faster than a human can type
+  //  - the name has digits in it (e.g. NAERTERHTE423196NERTHRRTH)
+  const ts = Number(b.form_ts);
+  const likelySpam = !ts || (Date.now() - ts) < 3000 || /\d/.test(String(b.name || ''));
+
   // Ceremony language (English / Español / Bilingual) — emailed only; not a mim_contacts column.
   const language = String(b.language || '').slice(0, 60);
 
@@ -58,9 +74,9 @@ export default async function handler(req, res) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         funnel_name: 'mim-contact-form',
-        subject: '💍 MIM inquiry — ' + row.name + (row.service ? ' (' + row.service + ')' : ''),
+        subject: (likelySpam ? '⚠️ Likely spam — ' : '💍 ') + 'MIM inquiry — ' + row.name + (row.service ? ' (' + row.service + ')' : ''),
         body,
-        push_title: 'MIM: new inquiry',
+        push_title: likelySpam ? 'MIM: likely spam' : 'MIM: new inquiry',
         push_message: row.name + ' — ' + (row.service || 'no service selected') + (language && language !== 'English' ? ' — ' + language : '')
       })
     });
