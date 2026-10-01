@@ -566,9 +566,9 @@ h1,h2,h3,h4{
 }
 
 /* Bilingual notice band (homepage + services) */
-.es-band{background:var(--white)}
+.es-band{background:var(--white);position:relative;z-index:1}
 .es-band .es-card{
-  max-width:900px;margin:0 auto;
+  max-width:820px;margin:0 auto;
   background:linear-gradient(135deg,var(--cream-2),var(--white));
   border:1px solid rgba(199,110,132,.28);border-radius:var(--radius);
   box-shadow:var(--shadow-sm);padding:40px 36px;text-align:center;
