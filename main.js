@@ -83,6 +83,102 @@
   }
 })();
 
+// Contact form — accessible inline validation (EN/ES), Turnstile, and the "couldn't verify" banner
+(function () {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+
+  // Show the verification error after a failed Turnstile check (?err=verify)
+  if (new URLSearchParams(location.search).get('err') === 'verify') {
+    var errBox = document.getElementById('formErr');
+    if (errBox) { errBox.hidden = false; errBox.scrollIntoView({ block: 'center' }); }
+  }
+
+  // Error text in the couple's ceremony language (English, Spanish, or both for bilingual)
+  var MSG = {
+    name:         ['Please enter your name.', 'Por favor escriba su nombre.'],
+    email:        ['Please enter a valid email address, like name@email.com.', 'Por favor escriba un correo electrónico válido, por ejemplo nombre@correo.com.'],
+    wedding_date: ['Please choose your wedding date — your best guess is fine.', 'Por favor elija la fecha de su boda — una fecha aproximada está bien.'],
+    message:      ['Please tell us a little about your ceremony.', 'Por favor cuéntenos un poco sobre su ceremonia.']
+  };
+  function text(key) {
+    var lang = (form.querySelector('[name="language"]') || {}).value || 'English';
+    var m = MSG[key];
+    if (lang === 'Español') return m[1];
+    if (lang.indexOf('Bilingual') === 0) return m[0] + ' / ' + m[1];
+    return m[0];
+  }
+
+  function errEl(input) {
+    var id = input.id + '-err';
+    var el = document.getElementById(id);
+    if (!el) {
+      el = document.createElement('p');
+      el.id = id;
+      el.className = 'field-error';
+      el.hidden = true;
+      input.parentNode.appendChild(el);
+      var d = (input.getAttribute('aria-describedby') || '').split(' ').filter(Boolean);
+      if (d.indexOf(id) < 0) d.push(id);
+      input.setAttribute('aria-describedby', d.join(' '));
+    }
+    return el;
+  }
+  function invalid(input) {
+    if (input.type === 'email') return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+    return !input.value.trim();
+  }
+  function show(input) {
+    var el = errEl(input);
+    var lang = (form.querySelector('[name="language"]') || {}).value || 'English';
+    el.setAttribute('lang', lang === 'Español' ? 'es' : 'en');
+    el.textContent = text(input.name);
+    el.hidden = false;
+    input.setAttribute('aria-invalid', 'true');
+  }
+  function clear(input) {
+    var el = document.getElementById(input.id + '-err');
+    if (el) { el.hidden = true; el.textContent = ''; }
+    input.removeAttribute('aria-invalid');
+  }
+
+  var required = Array.prototype.slice.call(form.querySelectorAll('[required]'));
+  form.setAttribute('novalidate', ''); // JS is running, so we show our own clearer messages
+  required.forEach(function (input) {
+    input.addEventListener('blur', function () { if (input.getAttribute('aria-invalid') === 'true' && !invalid(input)) clear(input); });
+    input.addEventListener('input', function () { if (input.getAttribute('aria-invalid') === 'true' && !invalid(input)) clear(input); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    var first = null;
+    required.forEach(function (input) {
+      if (invalid(input)) { show(input); if (!first) first = input; } else clear(input);
+    });
+    if (first) { e.preventDefault(); first.focus(); return; }
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  });
+
+  // Cloudflare Turnstile — loads only once the site key is set in Vercel (see /api/form-config)
+  var slot = document.getElementById('cf-turnstile');
+  if (!slot || !window.fetch) return;
+  fetch('/api/form-config').then(function (r) { return r.ok ? r.json() : {}; }).then(function (cfg) {
+    if (!cfg || !cfg.turnstileSiteKey) return;
+    window.mimTurnstileReady = function () {
+      window.turnstile.render(slot, {
+        sitekey: cfg.turnstileSiteKey,
+        appearance: 'interaction-only', // invisible unless Cloudflare needs a click
+        language: 'auto',
+        theme: 'light'
+      });
+    };
+    var s = document.createElement('script');
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=mimTurnstileReady';
+    s.async = true; s.defer = true;
+    document.head.appendChild(s);
+  }).catch(function () { /* no Turnstile = form still works; server fails open */ });
+})();
+
 // Newsletter signup — injected into the footer on every page
 (function () {
   var footer = document.querySelector('.site-footer .wrap');

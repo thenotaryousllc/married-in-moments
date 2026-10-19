@@ -6,6 +6,15 @@
 //   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY   (same Supabase project as ORF)
 //   MIM_MAKE_WEBHOOK (optional) overrides the webhook below
 // Table: public.mim_contacts. Make scenario: "MIM Website Lead → Email + Pushover Alert".
+//
+// Spam protection (Oct 2026) — 3 layers, all fail OPEN (when unsure, the couple's inquiry is delivered):
+//   1. Honeypot (company_website) — filled = bot, dropped silently.
+//   2. Cloudflare Turnstile — active once TURNSTILE_SITE_KEY + TURNSTILE_SECRET_KEY are set in Vercel.
+//   3. Vendor/SEO content filter (api/_spam.js) — matches go to Supabase public.mim_quarantine,
+//      NOT emailed. Borderline messages get a Claude Haiku "couple or vendor?" check (ANTHROPIC_API_KEY).
+// Keyword lists live in api/_spam.js.
+
+import { scoreSubmission, askHaiku, verifyTurnstile } from './_spam.js';
 
 const esc = (s) => String(s || '').replace(/[&<>"']/g, (c) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -30,12 +39,29 @@ export default async function handler(req, res) {
   if (b.service && !SERVICES.includes(b.service)) { done(); return; }
   if (b.language && !LANGUAGES.includes(b.language)) { done(); return; }
 
+  // Layer 2: Cloudflare Turnstile (skipped until the keys are set in Vercel; Cloudflare outage = let it through).
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  const human = await verifyTurnstile(b['cf-turnstile-response'], ip);
+  if (human === false) {
+    res.writeHead(302, { Location: origin + '/contact.html?err=verify#contactForm' }); res.end(); return;
+  }
+
+  // Wedding date (required on the form). Only a real YYYY-MM-DD date is kept.
+  const weddingDate = /^\d{4}-\d{2}-\d{2}$/.test(String(b.wedding_date || '')) ? String(b.wedding_date) : '';
+
+  // Layer 3: vendor/SEO content filter → quarantine instead of email.
+  const check = scoreSubmission({ ...b, wedding_date: weddingDate });
+  let aiVerdict = null;
+  if (check.verdict === 'borderline') aiVerdict = await askHaiku(b);
+  const quarantine = check.verdict === 'quarantine' || aiVerdict === 'VENDOR';
+
   // Soft bot signals: still delivered (never lose a real couple), but flagged.
   //  - form_ts is set by main.js, so a missing one means the page never ran in a browser
   //  - under 3 seconds from page load to submit is faster than a human can type
   //  - the name has digits in it (e.g. NAERTERHTE423196NERTHRRTH)
   const ts = Number(b.form_ts);
-  const likelySpam = !ts || (Date.now() - ts) < 3000 || /\d/.test(String(b.name || ''));
+  const likelySpam = !ts || (Date.now() - ts) < 3000 || /\d/.test(String(b.name || '')) ||
+    (check.verdict === 'borderline' && aiVerdict !== 'COUPLE');
 
   // Ceremony language (English / Español / Bilingual) — emailed only; not a mim_contacts column.
   const language = String(b.language || '').slice(0, 60);
@@ -51,8 +77,35 @@ export default async function handler(req, res) {
     utm_campaign: (b.utm_campaign || '').slice(0, 120),
     referrer: (b.referrer || '').slice(0, 300),
     landing: (b.landing || '').slice(0, 200),
+    wedding_date: weddingDate || null,
     source: 'mim-contact-form'
   };
+
+  const hasDb = process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const sb = (table, data) => fetch(process.env.SUPABASE_URL + '/rest/v1/' + table, {
+    method: 'POST',
+    headers: {
+      'apikey': process.env.SUPABASE_SERVICE_ROLE_KEY,
+      'Authorization': 'Bearer ' + process.env.SUPABASE_SERVICE_ROLE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify(data)
+  });
+
+  // Quarantined: log it, send NO email, show the sender the normal thank-you.
+  // If the quarantine log fails for any reason, fall through and deliver it (fail open).
+  if (quarantine && hasDb) {
+    try {
+      const q = await sb('mim_quarantine', {
+        name: row.name, email: row.email, phone: row.phone, service: row.service, language,
+        wedding_date: weddingDate || String(b.wedding_date || '').slice(0, 40), message: row.message,
+        reasons: check.reasons, score: check.strong * 10 + check.soft,
+        ai_verdict: aiVerdict, landing: row.landing, referrer: row.referrer
+      });
+      if (q.ok) { done(); return; }
+    } catch (e) { /* fall through and deliver */ }
+  }
 
   // Notify Shavon via Make (email + Pushover). The scenario expects prebuilt fields.
   const webhook = process.env.MIM_MAKE_WEBHOOK || 'https://hook.us2.make.com/qmi46skmdru6eboq54htxn8aj18fv2gb';
@@ -63,6 +116,7 @@ export default async function handler(req, res) {
     '<strong>Email:</strong> <a href="mailto:' + esc(row.email) + '">' + esc(row.email) + '</a><br>' +
     (row.phone ? '<strong>Phone:</strong> <a href="tel:' + esc(row.phone) + '">' + esc(row.phone) + '</a><br>' : '') +
     '<strong>Service:</strong> ' + esc(row.service) + '<br>' +
+    (weddingDate ? '<strong>Wedding date:</strong> ' + esc(new Date(weddingDate + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })) + '<br>' : '') +
     (language ? '<strong>Ceremony language:</strong> ' + esc(language) + '</p>' : '</p>') +
     '<p><strong>Message:</strong><br>' + esc(row.message).replace(/\n/g, '<br>') + '</p>' +
     '<p style="color:#8a7580;font-size:13px">Source: marriedinmoments.com contact form' +
@@ -82,19 +136,10 @@ export default async function handler(req, res) {
     });
   } catch (e) { /* non-fatal */ }
 
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) { done(); return; }
+  if (!hasDb) { done(); return; }
 
   try {
-    const resp = await fetch(process.env.SUPABASE_URL + '/rest/v1/mim_contacts', {
-      method: 'POST',
-      headers: {
-        'apikey': process.env.SUPABASE_SERVICE_ROLE_KEY,
-        'Authorization': 'Bearer ' + process.env.SUPABASE_SERVICE_ROLE_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify(row)
-    });
+    const resp = await sb('mim_contacts', row);
     if (resp.ok) { done(); }
     else { const detail = await resp.text(); res.status(502).json({ error: 'Could not save message', detail }); }
   } catch (e) {

@@ -348,6 +348,17 @@ h1,h2,h3,h4{
   font-family:'Montserrat',sans-serif;font-size:1rem;background:var(--cream);
 }
 .field textarea{min-height:120px;resize:vertical}
+/* Contact form: focus, hints, inline errors (WCAG 2.2 AA — 1.4.11, 2.4.7, 3.3.1, 3.3.3) */
+.field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px;border-color:var(--gold-deep)}
+.field input[type="date"]{display:block;min-height:50px;-webkit-appearance:none;appearance:none;color:var(--ink)}
+.field-hint{font-size:.82rem;color:var(--ink-soft);margin-top:6px;line-height:1.5}
+.field-error{font-size:.88rem;font-weight:700;color:#B3261E;margin-top:6px;line-height:1.5}
+.field-error::before{content:"\26A0\FE0E  "}
+.field [aria-invalid="true"]{border:2px solid #B3261E}
+.form-alert{background:#FDF1F0;border:2px solid #B3261E;border-radius:10px;padding:16px 18px;margin-bottom:16px;line-height:1.55}
+.form-alert a{color:var(--gold-deep);font-weight:700;text-decoration:underline}
+.form-alert-es{display:block;margin-top:8px}
+.turnstile-slot{margin:4px 0 14px;min-height:0}
 
 /* ---------- Responsive ---------- */
 @media (max-width:960px){
