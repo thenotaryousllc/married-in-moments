@@ -258,3 +258,16 @@
     });
   });
 })();
+
+// Keep every visible Google review count in sync with the aggregateRating schema on the page.
+(function () {
+  try {
+    var els = document.querySelectorAll('.js-review-count');
+    if (!els.length) return;
+    var blocks = document.querySelectorAll('script[type="application/ld+json"]');
+    for (var i = 0; i < blocks.length; i++) {
+      var m = blocks[i].textContent.match(/"reviewCount"\s*:\s*"?(\d+)"?/);
+      if (m) { els.forEach(function (n) { n.textContent = m[1]; }); return; }
+    }
+  } catch (e) {}
+})();
