@@ -9,12 +9,12 @@
 //
 // Spam protection (Oct 2026) — 3 layers, all fail OPEN (when unsure, the couple's inquiry is delivered):
 //   1. Honeypot (company_website) — filled = bot, dropped silently.
-//   2. Cloudflare Turnstile — active once TURNSTILE_SITE_KEY + TURNSTILE_SECRET_KEY are set in Vercel.
+//   2. Dropdown/timing checks below (bots that skip the browser).
 //   3. Vendor/SEO content filter (api/_spam.js) — matches go to Supabase public.mim_quarantine,
 //      NOT emailed. Borderline messages get a Claude Haiku "couple or vendor?" check (ANTHROPIC_API_KEY).
 // Keyword lists live in api/_spam.js.
 
-import { scoreSubmission, askHaiku, verifyTurnstile } from './_spam.js';
+import { scoreSubmission, askHaiku } from './_spam.js';
 
 const esc = (s) => String(s || '').replace(/[&<>"']/g, (c) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -38,13 +38,6 @@ export default async function handler(req, res) {
   const LANGUAGES = ['English', 'Español', 'Bilingual / Bilingüe (English + Español)'];
   if (b.service && !SERVICES.includes(b.service)) { done(); return; }
   if (b.language && !LANGUAGES.includes(b.language)) { done(); return; }
-
-  // Layer 2: Cloudflare Turnstile (skipped until the keys are set in Vercel; Cloudflare outage = let it through).
-  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
-  const human = await verifyTurnstile(b['cf-turnstile-response'], ip);
-  if (human === false) {
-    res.writeHead(302, { Location: origin + '/contact.html?err=verify#contactForm' }); res.end(); return;
-  }
 
   // Wedding date (required on the form). Only a real YYYY-MM-DD date is kept.
   const weddingDate = /^\d{4}-\d{2}-\d{2}$/.test(String(b.wedding_date || '')) ? String(b.wedding_date) : '';

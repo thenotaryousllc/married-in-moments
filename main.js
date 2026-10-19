@@ -83,16 +83,10 @@
   }
 })();
 
-// Contact form — accessible inline validation (EN/ES), Turnstile, and the "couldn't verify" banner
+// Contact form — accessible inline validation (EN/ES)
 (function () {
   var form = document.getElementById('contactForm');
   if (!form) return;
-
-  // Show the verification error after a failed Turnstile check (?err=verify)
-  if (new URLSearchParams(location.search).get('err') === 'verify') {
-    var errBox = document.getElementById('formErr');
-    if (errBox) { errBox.hidden = false; errBox.scrollIntoView({ block: 'center' }); }
-  }
 
   // Error text in the couple's ceremony language (English, Spanish, or both for bilingual)
   var MSG = {
@@ -159,24 +153,6 @@
     if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
   });
 
-  // Cloudflare Turnstile — loads only once the site key is set in Vercel (see /api/form-config)
-  var slot = document.getElementById('cf-turnstile');
-  if (!slot || !window.fetch) return;
-  fetch('/api/form-config').then(function (r) { return r.ok ? r.json() : {}; }).then(function (cfg) {
-    if (!cfg || !cfg.turnstileSiteKey) return;
-    window.mimTurnstileReady = function () {
-      window.turnstile.render(slot, {
-        sitekey: cfg.turnstileSiteKey,
-        appearance: 'interaction-only', // invisible unless Cloudflare needs a click
-        language: 'auto',
-        theme: 'light'
-      });
-    };
-    var s = document.createElement('script');
-    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=mimTurnstileReady';
-    s.async = true; s.defer = true;
-    document.head.appendChild(s);
-  }).catch(function () { /* no Turnstile = form still works; server fails open */ });
 })();
 
 // Newsletter signup — injected into the footer on every page

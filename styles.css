@@ -355,10 +355,6 @@ h1,h2,h3,h4{
 .field-error{font-size:.88rem;font-weight:700;color:#B3261E;margin-top:6px;line-height:1.5}
 .field-error::before{content:"\26A0\FE0E  "}
 .field [aria-invalid="true"]{border:2px solid #B3261E}
-.form-alert{background:#FDF1F0;border:2px solid #B3261E;border-radius:10px;padding:16px 18px;margin-bottom:16px;line-height:1.55}
-.form-alert a{color:var(--gold-deep);font-weight:700;text-decoration:underline}
-.form-alert-es{display:block;margin-top:8px}
-.turnstile-slot{margin:4px 0 14px;min-height:0}
 
 /* ---------- Responsive ---------- */
 @media (max-width:960px){

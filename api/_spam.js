@@ -91,18 +91,3 @@ export async function askHaiku(b) {
     return out.includes('VENDOR') ? 'VENDOR' : out.includes('COUPLE') ? 'COUPLE' : null;
   } catch (e) { return null; } finally { clearTimeout(t); }
 }
-
-// Cloudflare Turnstile. Returns true (pass), false (fail), or null (not configured / Cloudflare unreachable -> fail open).
-export async function verifyTurnstile(token, ip) {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return null;
-  if (!token) return false;
-  try {
-    const form = new URLSearchParams({ secret, response: String(token) });
-    if (ip) form.set('remoteip', ip);
-    const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: form });
-    if (!r.ok) return null;
-    const d = await r.json();
-    return !!d.success;
-  } catch (e) { return null; }
-}
