@@ -81,25 +81,31 @@ Portland Metro & surrounding counties.
 
 PACKAGES (deposits apply toward the total; balance billed at the start of the
 appointment, except Simply Eloped which is billed 3 days before):
-- Just the Two of Us — $125, $50 deposit. Marriage license signing only: legal
+- Drive-Thru "I Do" — from $125, $50 deposit. Married from your car: legal ceremony
+  and license signing in about 10 minutes without leaving the car, in our Beaverton
+  parking lot. Photo with the Just Married sign; priority mailing of the license
+  included. Oregon law requires two witnesses (18+): bring your own free, or add ours
+  for $25 each. Great for last-minute and same-day couples when the schedule allows —
+  same-day requests call or text (971) 715-2212. Available 7 days a week by appointment.
+- Just the Two of Us — $150, $50 deposit. Marriage license signing only: legal
   declaration and pronouncement, about 5-10 minutes, at our Beaverton studio. Designed
   for the couple only; priority mailing of the license included. Available 7 days a
   week by appointment.
-- The Minute Chapel (most popular) — $175, $75 deposit. Intimate styled elopement in
+- The Minute Chapel (most popular) — $225, $75 deposit. Intimate styled elopement in
   our decorated Beaverton space: 15-minute ceremony, drapery backdrop (choose ivory
   or navy at booking), faux cake for photos, then a 30-minute mini photo session
   using your own device. 2 guests included; up to 4 guests total +$25, up to 6 guests
   total +$50. Priority mailing of the license included. Weekends (Saturday and Sunday).
-- The Minute Chapel + The Whole Moment (best value) — $374, $150 deposit. The Minute
+- The Minute Chapel + The Whole Moment (best value) — $424, $150 deposit. The Minute
   Chapel with the whole celebration built in: The Styled Backdrop (silk florals,
   twinkle lights, candlelight), a personalized 6-inch cake, a set of 4 hand-decorated
   cookies, a 6-rose bouquet and matching boutonniere, the champagne toast setup, and
   two more cookies mailed on the couple's first anniversary. Weekends.
-- Simply Eloped — $250 flat, $100 deposit. Short pre-written ceremony (about 10-15
+- Simply Eloped — $400 flat, $100 deposit. Short pre-written ceremony (about 10-15
   minutes) at your home or private location anywhere in the Portland Metro, up to 20
   guests. Priority mailing of the license included. Weekends.
 
-AVAILABILITY: Just the Two of Us can be booked any day of the week. The Minute Chapel,
+AVAILABILITY: Drive-Thru "I Do" and Just the Two of Us can be booked any day of the week. The Minute Chapel,
 The Whole Moment, and Simply Eloped are Saturdays and Sundays. All bookings must be
 made at least 24 hours in advance online; our team can sometimes fit a same-day
 signing by phone.
@@ -129,7 +135,7 @@ details: https://marriedinmoments.com/#extras
   separately). The Whole Moment $199 (Styled Backdrop + cake + set of 4 cookies +
   6-rose bouquet + boutonniere + anniversary cookies; $226 separately) — available
   as an add-on to Just the Two of Us or The Minute Chapel, or booked as the
-  "Minute Chapel + The Whole Moment" package at $374. Upgrade the bundle bouquet to
+  "Minute Chapel + The Whole Moment" package at $424. Upgrade the bundle bouquet to
   12 roses for $20.
 - Classic $25 add-ons: additional guests (per package limits), keepsake marriage
   certificate (commemorative only), custom vows (written in advance; may be in

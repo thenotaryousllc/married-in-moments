@@ -31,10 +31,10 @@ export default async function handler(req, res) {
   if (b.company_website) { done(); return; }
 
   // Hard bot check: service/language must match the form's dropdowns exactly.
-  // Bots that scrape the raw HTML send "Simply Eloped &mdash; $250" (with the entity
+  // Bots that scrape the raw HTML send "Simply Eloped &mdash; $400" (with the entity
   // code) — a real browser never does. Silently drop those.
-  const SERVICES = ['Just the Two of Us — from $125', 'The Minute Chapel — from $175',
-    'Simply Eloped — $250', 'Not sure yet'];
+  const SERVICES = ['Drive-Thru "I Do" — from $125', 'Just the Two of Us — from $150',
+    'The Minute Chapel — from $225', 'Simply Eloped — $400', 'Not sure yet'];
   const LANGUAGES = ['English', 'Español', 'Bilingual / Bilingüe (English + Español)'];
   if (b.service && !SERVICES.includes(b.service)) { done(); return; }
   if (b.language && !LANGUAGES.includes(b.language)) { done(); return; }
