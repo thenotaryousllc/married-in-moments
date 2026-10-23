@@ -789,3 +789,14 @@ html{scroll-padding-top:110px}
 .ic-list li.hl{background:var(--peach-soft)}
 .ic-list a{color:var(--gold-deep);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 @media (max-width:760px){.ido-check{grid-template-columns:1fr;gap:20px}}
+
+/* ---------- Packages: four across (Drive-Thru joins the row) ---------- */
+@media (min-width:961px){
+  .pkg-grid--four{grid-template-columns:repeat(2,1fr);max-width:860px;margin-inline:auto}
+}
+@media (min-width:1180px){
+  .pkg-grid--four{grid-template-columns:repeat(4,1fr);max-width:none;gap:20px}
+  .pkg-grid--four .pkg{padding:30px 22px}
+  .pkg-grid--four .pkg h3{font-size:1.5rem;white-space:nowrap}
+  .pkg-grid--four .pkg .blurb{min-height:108px}
+}
