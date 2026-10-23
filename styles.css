@@ -758,3 +758,34 @@ html{scroll-padding-top:110px}
 .drive-thru .dt-photo{width:100%;height:100%;min-height:220px;object-fit:cover;object-position:58% center;border-radius:calc(var(--radius) - 6px)}
 @media (max-width:960px){.drive-thru.has-photo{grid-template-columns:200px 1fr}.drive-thru.has-photo .dt-cta{grid-column:1/-1}}
 @media (max-width:760px){.drive-thru.has-photo{grid-template-columns:1fr}.drive-thru .dt-photo{min-height:0;aspect-ratio:3/2;height:auto}}
+
+/* ---------- Local Love: dress partner spotlight (homepage) ---------- */
+.dress-spot{background:var(--cream-2)}
+.ds-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.ds-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:230px 230px;gap:12px}
+.ds-photos img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+.ds-photos img:first-child{grid-row:span 2}
+.ds-body h2{font-size:clamp(2.1rem,4.2vw,3.1rem);margin-bottom:16px}
+.ds-body h2 em{font-style:italic;color:var(--peach-deep)}
+.ds-body p{color:var(--ink-soft);font-size:1.06rem;max-width:46ch}
+.ds-body .ds-where{margin-top:12px}
+.ds-body .ds-where strong{color:var(--ink)}
+.ds-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:26px}
+.ds-handle{font-size:.92rem;color:var(--ink-soft)}
+@media (max-width:860px){.ds-grid{grid-template-columns:1fr;gap:28px}.ds-body{order:-1}.ds-photos{grid-template-rows:210px 210px;max-width:560px;width:100%}}
+@media (max-width:520px){.ds-photos{grid-template-rows:170px 170px}.ds-cta .btn{width:100%;text-align:center}.ds-cta{justify-content:center}}
+
+/* ---------- I-Do checklist (book page) ---------- */
+.ido-check{max-width:920px;margin:44px auto 8px;display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center}
+.ido-check h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-bottom:10px}
+.ido-check .ic-head p:not(.eyebrow){color:var(--ink-soft)}
+.ic-list{list-style:none;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden}
+.ic-list li{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-bottom:1px solid var(--cream-2)}
+.ic-list li:last-child{border-bottom:0}
+.ic-list strong{display:block;font-weight:700}
+.ic-sub{display:block;font-size:.92rem;color:var(--ink-soft);line-height:1.5}
+.ic-box{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--peach-deep);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem;margin-top:2px}
+.ic-list li.done .ic-box{background:var(--peach-deep)}
+.ic-list li.hl{background:var(--peach-soft)}
+.ic-list a{color:var(--gold-deep);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+@media (max-width:760px){.ido-check{grid-template-columns:1fr;gap:20px}}
