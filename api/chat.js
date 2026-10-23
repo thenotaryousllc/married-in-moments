@@ -111,8 +111,8 @@ made at least 24 hours in advance online; our team can sometimes fit a same-day
 signing by phone.
 
 LITTLE EXTRAS (add-ons — chosen at booking, or added later by texting or emailing our team:
-cookies and roses need at least 72 hours' notice and are not available for same-day bookings;
-the cake and the Styled Backdrop can be added up to 24 hours before the ceremony; added to the ceremony total). Photos and
+cookies, cake, and roses need at least 72 hours' notice and are not available for same-day bookings;
+the Styled Backdrop can be added up to 24 hours before the ceremony; added to the ceremony total). Photos and
 details: https://marriedinmoments.com/#extras
 - The Styled Backdrop — $75. Our drapery backdrop dressed in silk florals, a curtain
   of twinkle lights, and flameless candlelight. Available with Just the Two of Us and
