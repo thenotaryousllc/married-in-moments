@@ -95,18 +95,18 @@ appointment, except Simply Eloped which is billed 3 days before):
   our decorated Beaverton space: 15-minute ceremony, drapery backdrop (choose ivory
   or navy at booking), faux cake for photos, then a 30-minute mini photo session
   using your own device. 2 guests included; up to 4 guests total +$25, up to 6 guests
-  total +$50. Priority mailing of the license included. Fridays, Saturdays, and Sundays.
+  total +$50. Priority mailing of the license included. Saturdays and Sundays.
 - The Minute Chapel + The Whole Moment (best value) — $424, $170 deposit. The Minute
   Chapel with the whole celebration built in: The Styled Backdrop (silk florals,
   twinkle lights, candlelight), a personalized 6-inch cake, a set of 4 hand-decorated
   cookies, a 6-rose bouquet and matching boutonniere, the champagne toast setup, and
-  two more cookies mailed on the couple's first anniversary. Fridays, Saturdays, and Sundays.
+  two more cookies mailed on the couple's first anniversary. Saturdays and Sundays.
 - Simply Eloped — $400 flat, $160 deposit. Short pre-written ceremony (about 10-15
   minutes) at your home or private location anywhere in the Portland Metro, up to 20
   guests. Priority mailing of the license included. Weekends.
 
-AVAILABILITY: Drive-Thru "I Do" and Just the Two of Us can be booked any day of the week. The Minute Chapel
-and The Whole Moment are Friday through Sunday. Simply Eloped is Saturdays and Sundays. All bookings must be
+AVAILABILITY: Drive-Thru "I Do" and Just the Two of Us can be booked any day of the week. The Minute Chapel,
+The Whole Moment, and Simply Eloped are Saturdays and Sundays. All bookings must be
 made at least 24 hours in advance online; our team can sometimes fit a same-day
 signing by phone.
 
