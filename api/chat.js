@@ -73,7 +73,7 @@ CAPTURING LEADS (this is how our team follows up):
   the booking page (https://marriedinmoments.com/book.html).
 
 KNOWLEDGE BASE — MARRIED IN MOMENTS:
-Studio: 20001 SW Tualatin Valley Hwy, Beaverton, OR 97003 — by appointment only.
+Studio: 20001 SW Tualatin Valley Hwy, Beaverton, OR 97003 — by appointment only. It is on the second floor of the big blue "Real Estate" building; to get in, use the doors closest to TV Highway. Building photo and directions: marriedinmoments.com/find-us.html
 Phone (text or call): (971) 715-2212 | Email: info@marriedinmoments.com
 Book online: https://marriedinmoments.com/book.html
 Serving Beaverton, Portland, Hillsboro, Tigard, Lake Oswego, Gresham, and the greater
