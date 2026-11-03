@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/ig", "destination": "https://marriedinmoments.com/links.html?utm_source=instagram&utm_medium=social&utm_campaign=bio", "permanent": false },
     { "source": "/es", "destination": "/oficiante-de-bodas-en-espanol.html", "permanent": true },
     { "source": "/espanol", "destination": "/oficiante-de-bodas-en-espanol.html", "permanent": true }
   ]
