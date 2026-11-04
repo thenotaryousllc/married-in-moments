@@ -83,7 +83,8 @@ PACKAGES (deposits apply toward the total; balance billed at the start of the
 appointment, except Simply Eloped which is billed 3 days before):
 - Drive-Thru "I Do" — from $125, $50 deposit. Married from your car: legal ceremony
   and license signing in about 10 minutes without leaving the car, in our Beaverton
-  parking lot, or anywhere in the Portland Metro for a $100 travel fee (we drive to them). Photo with the Just Married sign; priority mailing of the license
+  parking lot, or anywhere in the Portland Metro for a $100 travel fee (we drive to them; to book it online they add
+  "Drive-Thru At Your Location" on the booking page and enter the address). Photo with the Just Married sign; priority mailing of the license
   included. Oregon law requires two witnesses (18+): bring your own free, or add ours
   for $25 each. Great for last-minute and same-day couples when the schedule allows —
   same-day requests call or text (971) 715-2212. Available 7 days a week by appointment.
