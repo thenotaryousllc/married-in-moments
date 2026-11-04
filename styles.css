@@ -800,3 +800,54 @@ html{scroll-padding-top:110px}
   .pkg-grid--four .pkg h3{font-size:1.5rem;white-space:nowrap}
   .pkg-grid--four .pkg .blurb{min-height:108px}
 }
+
+/* ===== Homepage hero v2 (arches) + ceremony clock — Nov 2026 ===== */
+.hero2{background:var(--cream);padding:40px 0 48px}
+.hero2-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.hero2 .script{font-size:2.3rem;display:block;color:var(--peach-deep);line-height:1}
+.hero2 h1{font-size:clamp(2.9rem,5.6vw,5.2rem);line-height:.98;margin:12px 0 6px;letter-spacing:-.01em;text-wrap:balance}
+.hero2 h1 em{color:var(--peach-deep)}
+.hero2-tri{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.3vw,2rem);margin:0 0 16px;color:var(--ink)}
+.hero2-lead{font-size:1.06rem;color:var(--ink-soft);max-width:46ch;margin:0 0 26px}
+.hero2-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero2-stars{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-size:.92rem;color:var(--ink-soft);text-decoration:none}
+.hero2-stars b{color:var(--ink)}
+.hero2-stars:hover span:last-child{text-decoration:underline}
+.hero2-arches{position:relative;height:540px}
+.hero2 .arch{position:absolute;overflow:hidden;border-radius:999px 999px 18px 18px;border:6px solid #fff;box-shadow:0 24px 50px -18px rgba(74,53,64,.35);animation:archRise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero2 .arch img{width:100%;height:100%;object-fit:cover}
+.hero2 .arch-c{width:46%;height:82%;left:27%;top:0;z-index:2;animation-delay:.1s}
+.hero2 .arch-l{width:36%;height:60%;left:0;top:28%;animation-delay:.25s}
+.hero2 .arch-r{width:36%;height:60%;right:0;top:34%;animation-delay:.4s}
+.hero2-badge{position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:3;background:#fff;border-radius:999px;padding:10px 20px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--peach-deep);white-space:nowrap;box-shadow:0 10px 24px rgba(74,53,64,.12);text-decoration:none}
+.hero2-badge:hover{text-decoration:underline}
+@keyframes archRise{from{transform:translateY(40px);opacity:0}}
+.mclock{background:#fff;border-top:1px solid var(--cream-2);padding:34px 0 42px}
+.mclock h2{font-size:2.1rem;margin:0}
+.mclock h2 em{color:var(--peach-deep)}
+.mclock-sub{margin:4px 0 26px;color:var(--ink-soft);font-size:.92rem}
+.mclock-ruler{position:relative;height:28px;border-bottom:2px solid var(--ink);margin:0 0 18px;background:repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px calc(100%/12)) bottom/100% 8px no-repeat}
+.mclock-ruler span{position:absolute;bottom:12px;font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--ink-soft);transform:translateX(-50%);white-space:nowrap}
+.mclock-pk{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.mclock-pk li{border-left:2px solid var(--peach);padding:4px 0 4px 16px}
+.mclock-pk li.pop{border-color:var(--peach-deep)}
+.mclock-pk .m{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.5rem;line-height:1;color:var(--peach-deep)}
+.mclock-pk .m small{font-size:1.1rem}
+.mclock-pk h3{margin:6px 0 2px;font-family:'Montserrat',system-ui,sans-serif;font-size:.95rem;font-weight:700}
+.mclock-pk p{margin:0;font-size:.82rem;color:var(--ink-soft);line-height:1.5}
+.mclock-pk .tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--peach-deep);color:#fff;border-radius:4px;padding:2px 6px;margin:4px 0 2px;vertical-align:2px}
+.mclock-pk h3 .tag{display:table}
+.gallery-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){
+  .hero2{padding:18px 0 36px}
+  .hero2-grid{grid-template-columns:minmax(0,1fr);gap:22px}
+  .hero2-arches{height:400px;order:-1}
+  .hero2 .script{font-size:1.9rem}
+  .mclock-pk{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px}
+  .mclock-ruler{display:none}
+}
+@media (max-width:960px){.gallery-grid.gallery-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:420px){.hero2-badge{font-size:1.05rem;padding:8px 14px}}
+@media (prefers-reduced-motion:reduce){.hero2 .arch{animation:none}}
+.hero2-stars{min-height:44px}
+.hero2-stars:focus-visible,.hero2-badge:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
