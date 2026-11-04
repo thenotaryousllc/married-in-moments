@@ -851,3 +851,22 @@ html{scroll-padding-top:110px}
 @media (prefers-reduced-motion:reduce){.hero2 .arch{animation:none}}
 .hero2-stars{min-height:44px}
 .hero2-stars:focus-visible,.hero2-badge:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+
+/* Hero v2 — romantic pass: arches over the lavender photo, larger readable type */
+.hero2{position:relative;overflow:hidden;background:#4a3540;padding:56px 0 64px;color:#fff}
+.hero2-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.hero2-shade{position:absolute;inset:0;background:linear-gradient(100deg,rgba(52,34,44,.88) 0%,rgba(84,44,60,.72) 45%,rgba(120,56,78,.35) 100%)}
+.hero2-grid{position:relative;z-index:1}
+.hero2 .script{color:#F6D9DD;font-size:2.6rem}
+.hero2 h1{color:#fff;text-shadow:0 2px 18px rgba(30,18,24,.45)}
+.hero2 h1 em{color:#F6C9D3}
+.hero2-tri{color:#fff;font-size:clamp(1.7rem,2.6vw,2.3rem)}
+.hero2-lead{color:#FDF1F3;font-size:1.2rem;line-height:1.7;max-width:44ch}
+.hero2 .btn-ghost{border-color:#fff;color:#fff;background:transparent}
+.hero2 .btn-ghost:hover{background:#fff;color:var(--peach-deep)}
+.hero2-stars{color:#FDF1F3;font-size:1rem}
+.hero2-stars b{color:#fff}
+.hero2 .arch{border-color:#FCF6F3;box-shadow:0 28px 60px -20px rgba(0,0,0,.55)}
+.hero2-badge{font-size:1.4rem;padding:12px 24px}
+@media (max-width:900px){.hero2{padding:22px 0 44px}.hero2-shade{background:linear-gradient(180deg,rgba(52,34,44,.55) 0%,rgba(68,40,52,.85) 45%,rgba(52,34,44,.92) 100%)}.hero2-lead{font-size:1.1rem}}
+@media (max-width:520px){.hero2 .script{font-size:1.65rem}}
