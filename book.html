@@ -65,12 +65,17 @@
   <div class="wrap">
     <span class="script" style="font-size:2rem" id="bkScript">Save your date</span>
     <h1 id="bkTitle">Book Your Ceremony</h1>
-    <p id="bkLead">Choose your date and time below to reserve your ceremony in minutes. All ceremonies are by appointment only.</p>
+    <p id="bkLead">Choose your date and time below to reserve your ceremony in minutes. Online bookings need at least 24 hours&rsquo; notice.</p>
   </div>
 </section>
 
 <section class="section" style="background:var(--cream-2)">
   <div class="wrap">
+
+    <aside class="same-day" id="sameDay" style="margin:0 auto 28px" aria-label="Same-day weddings">
+      <div><h2>Want to get married today?</h2><p>Walk in any day, 9 AM&ndash;5 PM, to our Beaverton space for Just the Two of Us or Drive-Thru &ldquo;I Do.&rdquo; No appointment needed.</p></div>
+      <div><h2>Want us to come to you?</h2><p>Book 24 hours ahead. Need it sooner? Call or text us at <a href="tel:+19717152212">(971) 715-2212</a>. If our schedule is open, we&rsquo;ll make it happen.</p></div>
+    </aside>
 
     <div class="lang-note" id="langNote">
       <strong>Ceremony in Spanish or bilingual?</strong> When the booking form asks <strong>&ldquo;Ceremony language / Idioma de la ceremonia,&rdquo;</strong> choose <em>Espa&ntilde;ol</em> or <em>Biling&uuml;e</em>. Same packages, same pricing.
@@ -99,7 +104,7 @@
 
     <p class="deposit-note" id="depositNote">
       A deposit secures your date and time and applies toward your total. Deposits: $50 (Drive-Thru &ldquo;I Do&rdquo;), $60 (Just the Two of Us), $90 (The Minute Chapel), $170 (The Minute Chapel + The Whole Moment), $160 (Simply Eloped).
-      Deposits are refundable or transferable with at least 48 hours&rsquo; notice; cancellations or reschedules within 48 hours forfeit the deposit. Ceremonies book at least 24 hours in advance.
+      Deposits are refundable or transferable with at least 48 hours&rsquo; notice; cancellations or reschedules within 48 hours forfeit the deposit. Online bookings need at least 24 hours&rsquo; notice.
       By booking you agree to our <a href="terms.html" style="color:var(--gold-deep)">Terms &amp; Conditions</a>.
     </p>
 
@@ -136,7 +141,7 @@
         <h2 class="was-h4">Connect</h2>
         <a href="mailto:info@marriedinmoments.com">info@marriedinmoments.com</a>
         <a href="tel:+19717152212">Text or call: (971) 715-2212</a>
-        <a href="https://www.google.com/maps?q=Married+In+Moments,+20001+SW+Tualatin+Valley+Hwy,+Beaverton,+OR+97003" target="_blank" rel="noopener">20001 SW Tualatin Valley Hwy, Beaverton, OR &middot; By appointment <span class="sr-only">(opens in new tab)</span></a>
+        <a href="https://www.google.com/maps?q=Married+In+Moments,+20001+SW+Tualatin+Valley+Hwy,+Beaverton,+OR+97003" target="_blank" rel="noopener">20001 SW Tualatin Valley Hwy, Beaverton, OR &middot; Open daily 9 AM&ndash;5 PM <span class="sr-only">(opens in new tab)</span></a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -155,10 +160,12 @@
   var t = function(id, html){ var el = document.getElementById(id); if (el) el.innerHTML = html; };
   t('bkScript', 'Reserven su fecha');
   t('bkTitle', 'Reservar su Ceremonia');
-  t('bkLead', 'Elijan su fecha y hora abajo para reservar su ceremonia en minutos. Todas las ceremonias son solo con cita previa.');
+  t('bkLead', 'Elijan su fecha y hora abajo para reservar su ceremonia en minutos. Las reservas en l&iacute;nea requieren al menos 24 horas de anticipaci&oacute;n.');
   t('langNote', '<strong>Ceremonia en espa&ntilde;ol o biling&uuml;e:</strong> en el formulario de reserva (en ingl&eacute;s), busquen la pregunta <strong>&ldquo;Ceremony language / Idioma de la ceremonia&rdquo;</strong> y elijan <em>Espa&ntilde;ol</em> o <em>Biling&uuml;e</em>. Mismos paquetes, mismos precios.' +
     '<span style="display:block;margin-top:6px;color:var(--ink-soft);font-size:.9rem">&iquest;Prefieren reservar por tel&eacute;fono o mensaje de texto? <a href="tel:+19717152212" style="color:var(--gold-deep);font-weight:700">(971) 715-2212</a> &middot; <a href="oficiante-de-bodas-en-espanol.html" style="color:var(--gold-deep);font-weight:700">Volver a Bodas en Espa&ntilde;ol</a></span>');
-  t('depositNote', 'Un dep&oacute;sito asegura su fecha y hora y se aplica a su total. Dep&oacute;sitos: $50 (Drive-Thru &ldquo;I Do&rdquo;), $60 (Just the Two of Us), $90 (The Minute Chapel), $170 (The Minute Chapel + The Whole Moment), $160 (Simply Eloped). El dep&oacute;sito es reembolsable o transferible con al menos 48 horas de aviso; las cancelaciones o cambios con menos de 48 horas pierden el dep&oacute;sito. Las ceremonias se reservan con al menos 24 horas de anticipaci&oacute;n. Al reservar, aceptan nuestros <a href="terms.html" style="color:var(--gold-deep)">T&eacute;rminos y Condiciones</a> (en ingl&eacute;s).');
+  t('sameDay', '<div><h2>&iquest;Quieren casarse hoy?</h2><p>Vengan sin cita a nuestro espacio en Beaverton, todos los d&iacute;as de 9 AM a 5 PM, para Just the Two of Us o Drive-Thru &ldquo;I Do&rdquo;.</p></div><div><h2>&iquest;Prefieren que vayamos a ustedes?</h2><p>Reserven con 24 horas de anticipaci&oacute;n. &iquest;Lo necesitan antes? Ll&aacute;mennos o env&iacute;ennos un mensaje de texto al <a href="tel:+19717152212">(971) 715-2212</a>. Si nuestro calendario lo permite, lo hacemos posible.</p></div>');
+  var sd=document.getElementById('sameDay'); if (sd){ sd.lang='es'; sd.setAttribute('aria-label','Bodas el mismo d\u00eda'); }
+  t('depositNote', 'Un dep&oacute;sito asegura su fecha y hora y se aplica a su total. Dep&oacute;sitos: $50 (Drive-Thru &ldquo;I Do&rdquo;), $60 (Just the Two of Us), $90 (The Minute Chapel), $170 (The Minute Chapel + The Whole Moment), $160 (Simply Eloped). El dep&oacute;sito es reembolsable o transferible con al menos 48 horas de aviso; las cancelaciones o cambios con menos de 48 horas pierden el dep&oacute;sito. Las reservas en l&iacute;nea requieren al menos 24 horas de anticipaci&oacute;n. Al reservar, aceptan nuestros <a href="terms.html" style="color:var(--gold-deep)">T&eacute;rminos y Condiciones</a> (en ingl&eacute;s).');
   t('idoCheck', '<div class="ic-head"><p class="eyebrow">Su lista para el &ldquo;S&iacute;, acepto&rdquo;</p><h2>Cuatro pasos y est&aacute;n casados.</h2><p>Nosotros nos encargamos de la ceremonia. Aqu&iacute; est&aacute; todo lo dem&aacute;s en una sola lista.</p></div>' +
     '<ol class="ic-list">' +
     '<li class="done"><span class="ic-box" aria-hidden="true">&#10003;</span><div><strong>Licencia de matrimonio</strong><span class="ic-sub">De la oficina del condado. Tr&aacute;iganla el d&iacute;a de su ceremonia.</span></div></li>' +
