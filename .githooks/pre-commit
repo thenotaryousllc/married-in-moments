@@ -1,0 +1,35 @@
+#!/bin/sh
+# Safety net: blocks commits that could expose private files or secrets.
+# Repo-specific "private folders" (never deployed) are read from .githooks/private-folders.
+fail=0
+private_re=""
+[ -f .githooks/private-folders ] && private_re=$(grep -v '^#' .githooks/private-folders | grep . | sed 's#[.]#\\.#g' | paste -sd'|' -)
+files=$(git diff --cached --name-only --diff-filter=ACMR)
+IFS='
+'
+for f in $files; do
+  lower=$(printf '%s' "$f" | tr 'A-Z' 'a-z')
+  base=$(basename "$lower")
+  case "$base" in
+    '~$'*|.env|.env.*|*.pem|*.key|*.p12|*.pfx) echo "BLOCKED (private/temp file): $f"; fail=1; continue;;
+  esac
+  case "$lower" in
+    *handoff*|claude\ outputs/*|_qa_*|*/_qa_*) echo "BLOCKED (internal working file): $f"; fail=1; continue;;
+  esac
+  case "$base" in
+    *.docx|*.doc|*.xlsx|*.xls|*.csv|*.pptx|*.diff|*.patch)
+      if [ -n "$private_re" ] && printf '%s' "$f" | grep -Eq "^($private_re)/"; then :; else
+        echo "BLOCKED (document outside a private folder; it would be public on the website): $f"; fail=1; continue
+      fi;;
+  esac
+done
+# Secret values in the staged changes (key names like SUPABASE_SERVICE_ROLE_KEY are fine; actual values are not)
+if git diff --cached -U0 --diff-filter=ACMR | grep '^+' | grep -Eq 'eyJhbGciOi[A-Za-z0-9_-]{20,}|sb_secret_[A-Za-z0-9_-]{10,}|sk_(live|test)_[A-Za-z0-9]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{30,}|xox[abprs]-[A-Za-z0-9-]{10,}|[0-9]{3}[^0-9]{0,2}[0-9]{3}[^0-9]?6969'; then
+  echo "BLOCKED: the changes contain what looks like a secret key, token, or the owner's personal phone number."; fail=1
+fi
+if [ $fail -ne 0 ]; then
+  echo ""
+  echo "Commit stopped by the safety check. Untick the files above (or ask Claude) and try again."
+  exit 1
+fi
+exit 0

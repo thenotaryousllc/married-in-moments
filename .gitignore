@@ -22,3 +22,8 @@ MIM_Spanish_Officiant_Launch.docx
 
 # Claude reports (keep local, never publish)
 Claude outputs/
+
+# Any session handoff or Claude working file
+*HANDOFF*
+*Handoff*
+*.diff

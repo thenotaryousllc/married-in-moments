@@ -1,0 +1,12 @@
+# Never deploy these to marriedinmoments.com (added 2026-11-17)
+Claude outputs/
+.githooks/
+*.md
+*.docx
+*.doc
+*.xlsx
+*.csv
+*.diff
+*.py
+~$*
+_*
